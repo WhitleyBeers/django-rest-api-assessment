@@ -1,0 +1,42 @@
+[
+    {
+        "model": "tunaapi.song",
+        "pk": 1,
+        "fields": {
+            "title": "Your Song",
+            "artist_id": 3,
+            "album": "Album 1",
+            "length": 4
+        }
+    },
+    {
+        "model": "tunaapi.song",
+        "pk": 2,
+        "fields": {
+            "title": "Rock n Roll",
+            "artist_id": 2,
+            "album": "dead dead",
+            "length": 3
+          }
+    },
+    {
+        "model": "tunaapi.song",
+        "pk": 3,
+        "fields": {
+            "title": "my song",
+            "artist_id": 1,
+            "album": "my album",
+            "length": 5
+          }
+    },
+    {
+        "model": "tunaapi.song",
+        "pk": 4,
+        "fields": {
+            "title": "sweet home alabama",
+            "artist_id": 3,
+            "album": "home alone",
+            "length": 8
+          }
+    }
+]
