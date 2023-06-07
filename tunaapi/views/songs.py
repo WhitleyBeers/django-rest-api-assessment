@@ -63,7 +63,8 @@ class SongView(ViewSet):
         song.artist_id = artist_id
         song.save()
 
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+        serializer = SongSerializer(song)
+        return Response(serializer.data)
 
 
 class SongSerializer(serializers.ModelSerializer):
