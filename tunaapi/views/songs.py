@@ -1,4 +1,4 @@
-"""View module for handling requests about game types"""
+"""View module for handling requests about songs"""
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -12,7 +12,7 @@ class SongView(ViewSet):
         """Handle GET requests for single song
 
         Returns:
-          Reponse - JSON serialized song type
+          Reponse - JSON serialized song
         """
         try:
             song = Song.objects.get(pk=pk)
