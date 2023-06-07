@@ -52,7 +52,7 @@ class SongView(ViewSet):
         """Handle PUT requests for a song
 
         Returns:
-          Response - Empty body with 204 status code
+          Response - JSON serialized song instance
         """
 
         song = Song.objects.get(pk=pk)
@@ -65,6 +65,16 @@ class SongView(ViewSet):
 
         serializer = SongSerializer(song)
         return Response(serializer.data)
+    
+    def destroy(self, request, pk):
+        """Handles DELETE requests for a song
+        
+        Return:
+          Response - Empty body with 204 status code
+        """
+        song = Song.objects.get(pk=pk)
+        song.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
 class SongSerializer(serializers.ModelSerializer):
