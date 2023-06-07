@@ -65,10 +65,10 @@ class SongView(ViewSet):
 
         serializer = SongSerializer(song)
         return Response(serializer.data)
-    
+
     def destroy(self, request, pk):
         """Handles DELETE requests for a song
-        
+
         Return:
           Response - Empty body with 204 status code
         """
