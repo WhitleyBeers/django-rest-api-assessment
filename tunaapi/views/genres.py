@@ -56,6 +56,16 @@ class GenreView(ViewSet):
         serializer = GenreSerializer(genre)
         return Response(serializer.data)
 
+    def destroy(self, request, pk):
+        """Handles DELETE requests for a genre
+
+        Returns:
+          Reponse - Message confirming delete with 204 status code
+        """
+        genre = Genre.objects.get(pk=pk)
+        genre.delete()
+        return Response({'message': 'Genre deleted'}, status=status.HTTP_204_NO_CONTENT)
+
 
 class GenreSerializer(serializers.ModelSerializer):
     """Json serializer for genres
