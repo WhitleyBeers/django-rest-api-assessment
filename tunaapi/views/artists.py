@@ -16,6 +16,8 @@ class ArtistView(ViewSet):
         """
         try:
             artist = Artist.objects.get(pk=pk)
+            song_count = artist.songs.count()
+            artist.song_count = song_count
             serializer = ArtistSerializer(artist)
             return Response(serializer.data)
         except Artist.DoesNotExist as ex:
@@ -75,7 +77,9 @@ class ArtistView(ViewSet):
 class ArtistSerializer(serializers.ModelSerializer):
     """JSON serializer for artists
     """
+    song_count = serializers.IntegerField(default=None)
     class Meta:
         model = Artist
-        fields = ('id', 'name', 'age', 'bio')
+        fields = ('id', 'name', 'age', 'bio',
+                  'song_count', 'songs')
         depth = 1
