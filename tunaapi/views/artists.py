@@ -44,22 +44,32 @@ class ArtistView(ViewSet):
         )
         serializer = ArtistSerializer(artist)
         return Response(serializer.data)
-    
+
     def update(self, request, pk):
         """Handles PUT requests for an artist
-        
+
         Returns:
           Response - JSON serialized artist instance
         """
-        
+
         artist = Artist.objects.get(pk=pk)
         artist.name = request.data['name']
         artist.age = request.data['age']
         artist.bio = request.data['bio']
         artist.save()
-        
+
         serializer = ArtistSerializer(artist)
         return Response(serializer.data)
+
+    def destroy(self, request, pk):
+        """Handles DELETE requests for an artist
+
+        Returns:
+          Response - Empty body with 204 status code
+        """
+        artist = Artist.objects.get(pk=pk)
+        artist.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
 class ArtistSerializer(serializers.ModelSerializer):
